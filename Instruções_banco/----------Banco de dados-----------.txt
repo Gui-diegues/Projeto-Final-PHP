@@ -1,0 +1,33 @@
+----------Banco de dados------------------
+loja1
+
+
+----------Utilizando----------------------
+
+painel administrativo
+           L> localhost/PreProjeto_php/admin/
+
+painel estoque
+       L> localhost/facul/PreProjeto_php/estoque/
+
+
+Criação:
+----------ADMINISTRAÇÃO--------------------
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100),
+    estado VARCHAR(100)
+);
+
+
+
+----------Estoque-----------------------------
+
+CREATE TABLE estoque (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    item VARCHAR(100) NOT NULL,
+    quantidade INT DEFAULT 0,
+    preco DECIMAL(10,2)
+);
