@@ -1,3 +1,7 @@
+<style>
+   
+</style>
+
 <?php
     require_once "config.inc.php";
 
@@ -5,7 +9,6 @@
 
     $resultado = mysqli_query($conexao, $sql);
 
-    echo "<a href='?pg=clientes_form'>Cadastrar clientes</a>";
 
     echo"<h2>Lista de clientes</h2>";
 
@@ -22,7 +25,7 @@
         }
     }else{
         echo "<h2>Nenhum cliente cadastrado</h2>";
-        echo "<a href='?pg=clientes_admin'>Voltar</a>";
+        echo "<a href='?pg=index'>Voltar</a>";
     }
             
 ?>
