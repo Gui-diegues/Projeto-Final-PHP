@@ -1,6 +1,9 @@
+<link rel="stylesheet" href="style.css"> 
+
 <nav>
-    <a href="#">Início</a>
-    <a href="#">Modelos</a>
-    <a href="#">Promoções</a>
-    <a href="#">Contato</a>
+    <a href="?pg=conteudo">Início</a>
+    <a href="?pg=modelos">Modelos</a>
+    <a href="?pg=promocao">Promoções</a>
+    <a href="?pg=faleconosco">Fale Conosco</a>
+    <a href="?pg=carrinho">Carrinho</a>
 </nav>
