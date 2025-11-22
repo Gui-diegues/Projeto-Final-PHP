@@ -5,5 +5,5 @@
     <a href="?pg=modelos">Modelos</a>
     <a href="?pg=promocao">Promoções</a>
     <a href="?pg=faleconosco">Fale Conosco</a>
-    <a href="?pg=carrinho">Carrinho</a>
+    <a href="?pg=carrinho">🛒</a>
 </nav>

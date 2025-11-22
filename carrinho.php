@@ -24,12 +24,13 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0px;
             background-color: var(--secondary-color);
             color: var(--text-color);
         }
         
         h1, h2 {
+            margin: 10px 0;
             text-align: center;
             color: var(--primary-color);
         }
