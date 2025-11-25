@@ -16,13 +16,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if(mysqli_query($conexao, $sql)){
         echo "<h3>Cliente alterado com sucesso!</h3>";
-        echo "<a href='?pg=clientes_admin'>Voltar</a>";
+        echo "<a class='botaomenu' href='?pg=clientes_admin'>Voltar</a>";
     }else{
         echo "<h3>Erro ao alterar cadastro do cliente!</h3>";
     }
 }else{
     echo "<h2>Acesso negado!</h2>";
-    echo "<a href='?pg=clientes_admin'>Voltar</a>";
+    echo "<a class='botaomenu' href='?pg=clientes_admin'>Voltar</a>";
 }
 
 mysqli_close($conexao);

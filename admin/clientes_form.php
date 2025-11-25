@@ -6,7 +6,7 @@
     }
     form {
         background: #fff;
-        padding: 20px;
+        padding: 30px;
         width: 350px;
         margin: auto;
         border-radius: 8px;
@@ -37,7 +37,7 @@
         margin-top: 15px;
         width: 100%;
         padding: 10px;
-        background-color: #4CAF50;
+        background-color: #4A90E2;
         color: white;
         border: none;
         border-radius: 5px;
@@ -46,11 +46,12 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #45a049;
+        background-color: #1354ccff;
     }
 </style>
 <body>
-    <h2><br>Cadastro de cliente<br></h2>
+    <h2>Cadastro de cliente</h2>
+
     <form action="?pg=clientes_cadastro" method="post">
         <label>Nome:</label>
         <input type="text" name="cliente"><br>
