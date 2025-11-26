@@ -1,236 +1,177 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+<?php 
+    $titulo = "Meu Carrinho | JSON CALÇADOS";
+    $pagina_atual = "carrinho";
+    include 'header.php'; 
+?>
 
-        :root {
-            --primary-color: #0a0a0aff; /* Azul médio para botões primários */
-            --secondary-color: #e3f2fd; /* Azul muito claro para fundo */
-            --accent-color: #1976d2; /* Azul escuro para remover */
-            --clear-color: #42a5f5; /* Azul claro para limpar */
-            --text-color: #0d47a1; /* Azul escuro para texto */
-            --border-color: #bbdefb; /* Azul claro para bordas */
-            --card-bg: #ffffff; /* Branco para cards */
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0px;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-        }
-        
-        h1, h2 {
-            margin: 10px 0;
-            text-align: center;
-            color: var(--primary-color);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .produtos, .carrinho {
-            flex: 1;
-            min-width: 300px;
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        
-        .produto {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            background: var(--card-bg);
-        }
-        
-        .produto input {
-            width: 60px;
-            padding: 5px;
-            margin-right: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-        }
-        
-        button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            opacity: 0.9;
-        }
-        
-        .btn-add {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-remove {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        
-        .btn-clear {
-            background-color: var(--clear-color);
-            color: white;
-            width: 100%;
-            margin-top: 10px;
-        }
-        
-        .item-carrinho {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .item-carrinho .quantidade {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .quantidade button {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-        }
-        
-        .total {
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Loja Virtual - Carrinho de Compras</h1>
-    
-    <div class="container">
-        <div class="produtos">
-            <h2>Produtos Disponíveis</h2>
-            <div id="produtos">
-                <div class="produto">
-                    <span>Produto 1 - R$ 10,00</span>
-                    <div>
-                        <input type="number" min="1" value="1" id="qtd-prod1">
-                        <button class="btn-add" onclick="adicionarAoCarrinho('Produto 1', 10, 'qtd-prod1')">Adicionar</button>
-                    </div>
-                </div>
-                <div class="produto">
-                    <span>Produto 2 - R$ 20,00</span>
-                    <div>
-                        <input type="number" min="1" value="1" id="qtd-prod2">
-                        <button class="btn-add" onclick="adicionarAoCarrinho('Produto 2', 20, 'qtd-prod2')">Adicionar</button>
-                    </div>
-                </div>
-                <div class="produto">
-                    <span>Produto 3 - R$ 15,00</span>
-                    <div>
-                        <input type="number" min="1" value="1" id="qtd-prod3">
-                        <button class="btn-add" onclick="adicionarAoCarrinho('Produto 3', 15, 'qtd-prod3')">Adicionar</button>
-                    </div>
-                </div>
+<style>
+    .cart-page { margin: 80px auto; }
+    table { width: 100%; border-collapse: collapse; }
+    .cart-info { display: flex; flex-wrap: wrap; }
+    th { text-align: left; padding: 10px; color: #fff; background: #ff523b; font-weight: normal; }
+    td { padding: 10px 5px; }
+    td input { width: 40px; height: 30px; padding: 5px; }
+    td a { color: #ff523b; font-size: 12px; cursor: pointer; }
+    td img { width: 80px; height: 80px; margin-right: 10px; border-radius: 5px; object-fit: cover;}
+    .total-price { display: flex; justify-content: flex-end; margin-top: 20px; }
+    .total-price table { border-top: 3px solid #ff523b; width: 100%; max-width: 400px; }
+    td:last-child { text-align: right; }
+    th:last-child { text-align: right; }
+    .checkout-btn { background: #333; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; border-radius: 30px; font-size: 16px; margin-top: 10px; transition: 0.3s; }
+    .checkout-btn:hover { background: #563434; }
+    .coupon-box { margin-top: 20px; text-align: right; }
+    .coupon-box input { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+    .coupon-btn { background: #ff523b; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
+    @media only screen and (max-width: 600px) { .cart-info p { display: none; } }
+</style>
+
+<div class="small-container cart-page">
+    <table id="tabela-carrinho">
+        <tr>
+            <th>Produto</th>
+            <th>Qtd</th>
+            <th>Subtotal</th>
+        </tr>
+    </table>
+
+    <div class="total-price">
+        <div>
+            <div class="coupon-box">
+                <input type="text" id="cupomInput" placeholder="Cupom de desconto">
+                <button class="coupon-btn" onclick="aplicarCupom()">Aplicar</button>
+                <p id="msgCupom" style="font-size: 12px; margin-top: 5px;"></p>
             </div>
-        </div>
-        
-        <div class="carrinho">
-            <h2>Carrinho</h2>
-            <div id="itens-carrinho"></div>
-            <div class="total">Total: R$ <span id="total">0,00</span></div>
-            <button class="btn-clear" onclick="limparCarrinho()">Limpar Carrinho</button>
+
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td id="cart-subtotal">R$ 0,00</td>
+                </tr>
+                <tr>
+                    <td>Desconto</td>
+                    <td id="cart-discount">R$ 0,00</td>
+                </tr>
+                <tr>
+                    <td>Frete</td>
+                    <td style="color: green;">Grátis</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td id="cart-total" style="font-weight: bold; font-size: 18px;">R$ 0,00</td>
+                </tr>
+            </table>
+            <button class="checkout-btn" onclick="finalizarCompra()">Finalizar Compra</button>
         </div>
     </div>
+</div>
 
-    <script>
-        let carrinho = [];
-        
-        function adicionarAoCarrinho(nome, preco, inputId) {
-            const quantidade = parseInt(document.getElementById(inputId).value) || 1;
-            const itemExistente = carrinho.find(item => item.nome === nome);
-            if (itemExistente) {
-                itemExistente.quantidade += quantidade;
-            } else {
-                carrinho.push({ nome, preco, quantidade });
-            }
-            atualizarCarrinho();
+<script>
+    let carrinho = JSON.parse(localStorage.getItem('jsonCarrinho')) || [];
+    const tabela = document.getElementById('tabela-carrinho');
+    let descontoValor = 0;
+
+    function carregarCarrinho() {
+        tabela.innerHTML = `<tr><th>Produto</th><th>Qtd</th><th>Subtotal</th></tr>`;
+        let subtotalGeral = 0;
+
+        if(carrinho.length === 0) {
+            tabela.innerHTML += `<tr><td colspan="3" style="text-align:center; padding:30px;">Seu carrinho está vazio. <br><a href="lancamentos.php" style="font-size:16px;">Ir às compras</a></td></tr>`;
         }
-        
-        function ajustarQuantidade(nome, delta) {
-            const item = carrinho.find(item => item.nome === nome);
-            if (item) {
-                item.quantidade += delta;
-                if (item.quantidade <= 0) {
-                    removerDoCarrinho(nome);
-                } else {
-                    atualizarCarrinho();
-                }
-            }
-        }
-        
-        function removerDoCarrinho(nome) {
-            carrinho = carrinho.filter(item => item.nome !== nome);
-            atualizarCarrinho();
-        }
-        
-        function atualizarCarrinho() {
-            const itensDiv = document.getElementById('itens-carrinho');
-            itensDiv.innerHTML = '';
-            let total = 0;
-            
-            carrinho.forEach(item => {
-                const subtotal = item.preco * item.quantidade;
-                total += subtotal;
-                itensDiv.innerHTML += `
-                    <div class="item-carrinho">
-                        <span>${item.nome} - R$ ${subtotal.toFixed(2)}</span>
-                        <div class="quantidade">
-                            <button onclick="ajustarQuantidade('${item.nome}', -1)">-</button>
-                            <span>x${item.quantidade}</span>
-                            <button onclick="ajustarQuantidade('${item.nome}', 1)">+</button>
-                            <button class="btn-remove" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
+
+        carrinho.forEach((item, index) => {
+            let subtotal = item.preco * item.qtd;
+            subtotalGeral += subtotal;
+
+            let linha = `
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <img src="${item.img}">
+                        <div>
+                            <p>${item.nome}</p>
+                            <small>Preço: R$ ${item.preco.toFixed(2).replace('.', ',')}</small>
+                            <br>
+                            <p style="font-size:12px; color:#999;">Tam: ${item.tamanho}</p>
+                            <a onclick="removerItem(${index})">Remover</a>
                         </div>
                     </div>
-                `;
-            });
+                </td>
+                <td><input type="number" value="${item.qtd}" min="1" onchange="alterarQtd(${index}, this.value)"></td>
+                <td>R$ ${subtotal.toFixed(2).replace('.', ',')}</td>
+            </tr>`;
             
-            document.getElementById('total').textContent = total.toFixed(2);
+            tabela.innerHTML += linha;
+        });
+
+        atualizarTotais(subtotalGeral);
+    }
+
+    function atualizarTotais(subtotal) {
+        let total = subtotal - descontoValor;
+        if(total < 0) total = 0;
+
+        document.getElementById('cart-subtotal').innerText = "R$ " + subtotal.toFixed(2).replace('.', ',');
+        document.getElementById('cart-discount').innerText = "- R$ " + descontoValor.toFixed(2).replace('.', ',');
+        document.getElementById('cart-total').innerText = "R$ " + total.toFixed(2).replace('.', ',');
+    }
+
+    function removerItem(index) {
+        carrinho.splice(index, 1);
+        localStorage.setItem('jsonCarrinho', JSON.stringify(carrinho));
+        carregarCarrinho();
+    }
+
+    function alterarQtd(index, novaQtd) {
+        if(novaQtd < 1) novaQtd = 1;
+        carrinho[index].qtd = parseInt(novaQtd);
+        localStorage.setItem('jsonCarrinho', JSON.stringify(carrinho));
+        carregarCarrinho();
+    }
+
+    function aplicarCupom() {
+        const cupom = document.getElementById('cupomInput').value.toUpperCase();
+        const msg = document.getElementById('msgCupom');
+        
+        if(cupom === "JSON20") {
+            let subtotalAtual = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+            descontoValor = subtotalAtual * 0.20;
+            msg.style.color = "green";
+            msg.innerText = "Cupom de 20% aplicado!";
+            carregarCarrinho();
+        } else {
+            descontoValor = 0;
+            msg.style.color = "red";
+            msg.innerText = "Cupom inválido.";
+            carregarCarrinho();
+        }
+    }
+
+    function finalizarCompra() {
+        if(carrinho.length === 0) {
+            alert("Seu carrinho está vazio!");
+            return;
         }
         
-        function limparCarrinho() {
-            carrinho = [];
-            atualizarCarrinho();
-        }
-    </script>
-</body>
-</html>
+        let historico = JSON.parse(localStorage.getItem('meusPedidos')) || [];
+        let totalFinal = document.getElementById('cart-total').innerText;
+        
+        let novoPedido = {
+            id: "#" + Math.floor(Math.random() * 9000 + 1000),
+            data: new Date().toLocaleDateString('pt-BR'),
+            produto: carrinho.length + " Itens (Via Carrinho)",
+            status: "Processando",
+            total: totalFinal
+        };
+
+        historico.push(novoPedido);
+        localStorage.setItem('meusPedidos', JSON.stringify(historico));
+        localStorage.removeItem('jsonCarrinho');
+        
+        alert("Compra realizada com sucesso! Obrigado.");
+        window.location.href = "pedidos.php";
+    }
+
+    carregarCarrinho();
+</script>
+
+<?php include 'footer.php'; ?>

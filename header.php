@@ -11,9 +11,8 @@
     <?php if(isset($css_extra)) echo $css_extra; ?>
 
     <style>
-        /* Banner de Frete Grátis */
         .top-banner {
-            background-color: #ff523b; /* COR ALTERADA AQUI (Laranja da Marca) */
+            background-color: #ff523b;
             color: #fff;
             text-align: center;
             padding: 8px 0;
@@ -45,7 +44,7 @@
                         <li><a href="pedidos.php" style="<?php if($pagina_atual == 'pedidos') echo 'color: #ff523b;'; ?>">Meus Pedidos</a></li>
                     </ul>
                 </nav>
-                <a href=""><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" width="30px" height="30px" alt="Carrinho"></a>
+                <a href="carrinho.php"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" width="30px" height="30px" alt="Carrinho"></a>
                 <img src="https://i.ibb.co/6XbqwjD/menu.png" class="menu-icon" onclick="menutoggle()" alt="Menu">
             </div>
             

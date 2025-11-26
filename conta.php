@@ -2,7 +2,7 @@
     $titulo = "Minha Conta | JSON CALÇADOS";
     $pagina_atual = "conta";
     
-    // CSS Específico desta página (guardado na variável para o header imprimir)
+    
     $css_extra = "
     <style>
         .account-page { position: relative; padding: 50px 0; background: radial-gradient(#fff, #f1f1f1); overflow: hidden; min-height: 80vh; display: flex; align-items: center; justify-content: center; }

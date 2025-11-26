@@ -7,7 +7,7 @@
 <style>
     html { scroll-behavior: smooth; }
     .row-2 { margin-top: 50px; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; margin-bottom: 20px;}
-    /* Cor das estrelas */
+   
     .rating .fa { color: #ff523b; }
 </style>
 
@@ -24,7 +24,7 @@
     <div class="row">
         <?php
         $drops = [
-            // IDs mapeados para produto.php (5 e 6 existem lá, 7 e 8 são novos)
+          
             ["id" => 5, "nome" => "Nike Dunk Low Retro Panda", "preco" => "R$ 899,00", "img" => "https://images.unsplash.com/photo-1607792246307-2c7ba687b50a?q=80&w=387&auto=format&fit=crop"],
             ["id" => 6, "nome" => "Adidas Yeezy Boost 350 V2", "preco" => "R$ 1.499,00", "img" => "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
             ["id" => 7, "nome" => "Air Jordan 1 Mid SE", "preco" => "R$ 1.199,00", "img" => "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],

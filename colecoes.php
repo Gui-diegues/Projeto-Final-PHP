@@ -5,7 +5,7 @@
 ?>
 
 <style>
-    /* Ajuste de espaçamento para os títulos das seções */
+
     .row-2 { margin-top: 50px; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; margin-bottom: 20px;}
     .rating .fa { color: #ff523b; }
 </style>
