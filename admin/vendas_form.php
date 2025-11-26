@@ -58,7 +58,7 @@
     <h2>Cadastro de Venda</h2>
     <form action="?pg=vendas_cadastro" method="post">
         <label>Nome do produto:</label>
-        <input type="text" name="cliente"><br>
+        <input type="text" name="produto"><br>
         <label>Quantidade:</label>
         <input type="number" name="quantidade"><br> 
         <label>Valor:</label>

@@ -2,11 +2,11 @@
     require_once "config.inc.php";
 
     if($_SERVER["REQUEST_METHOD"]== "POST"){
-        $prduto = $_POST["produto"];
+        $produto = $_POST["produto"];
         $quantidade = $_POST["quantidade"];
         $valor = $_POST["valor"];
 
-        $sql = "INSERT INTO produtos (produto, quantidade, valor) VALUES ('$produto', '$quabtidade', '$valor')";
+        $sql = "INSERT INTO produtos (produto, quantidade, valor) VALUES ('$produto', '$quantidade', '$valor')";
 
         if(mysqli_query($conexao, $sql)){
             echo "<h3>Produto cadastrado com sucesso</h3>";

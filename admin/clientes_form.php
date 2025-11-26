@@ -6,17 +6,22 @@
     }
     form {
         background: #fff;
-        padding: 30px;
+        padding: 20px;
         width: 350px;
         margin: auto;
         border-radius: 8px;
         box-shadow: 0 0 8px rgba(0,0,0,0.1);
-        margin-top: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
     }
 
     h2 {
         text-align: center;
         margin-top: 0px;
+        padding: 0;
     }
 
     label {
@@ -25,11 +30,11 @@
         font-weight: bold;
     }
 
-    input[type="text"] {
+    input   {
         width: 100%;
         padding: 8px;
         margin-top: 5px;
-        border: 1px solid #ccc;
+        border: 2px solid #ccc;
         border-radius: 5px;
     }
 
@@ -50,12 +55,12 @@
     }
 </style>
 <body>
-    <h2>Cadastro de cliente</h2>
+    <h2>Cadastro de Cliente</h2>
 
     <form action="?pg=clientes_cadastro" method="post">
         <label>Nome:</label>
         <input type="text" name="cliente"><br>
-        <label>cidade:</label>
+        <label>Cidade:</label>
         <input type="text" name="cidade"><br> 
         <label>Estado:</label>
         <input type="text" name="estado"><br>

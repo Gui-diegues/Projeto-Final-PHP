@@ -22,7 +22,8 @@ echo"<br>";
 
 echo"<a class='botaomenu' href='?pg=clientes_admin'>Listar Clientes   </a>";
 echo"<a class='botaomenu' href='?pg=clientes_form'>Cadastrar Clientes </a>";
-echo"<a class='botaomenu' href='?pg=vendas_form'>Efetuar Venda </a>";
+echo"<a class='botaomenu' href='?pg=vendas_admin'>Listar Produto </a>";
+echo"<a class='botaomenu' href='?pg=vendas_form'>Cadastrar Produto </a>";
 
 
 //área de conteudo 
