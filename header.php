@@ -9,8 +9,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <?php if(isset($css_extra)) echo $css_extra; ?>
+
+    <style>
+        /* Banner de Frete Grátis */
+        .top-banner {
+            background-color: #ff523b; /* COR ALTERADA AQUI (Laranja da Marca) */
+            color: #fff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="top-banner">
+        FRETE GRÁTIS PARA TODO BRASIL EM COMPRAS ACIMA DE R$ 299 &nbsp;|&nbsp; USE O CUPOM: <strong>JSON20</strong>
+    </div>
 
     <div class="<?php echo ($pagina_atual == 'home') ? 'header' : 'container'; ?>">
         <div class="container">

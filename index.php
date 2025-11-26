@@ -39,26 +39,31 @@
         <div class="row">
             <?php
             // Lista de produtos em destaque na Home
+            // Note que adicionei o "id" para funcionar com a página produto.php
             $destaques = [
                 [
+                    "id" => 1, 
                     "nome" => "Nike Air Zoom Pegasus", 
                     "preco" => "R$ 599,90", 
                     "img" => "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
                     "nota" => 5
                 ],
                 [
+                    "id" => 2,
                     "nome" => "Nike Air Force 1 '07", 
                     "preco" => "R$ 749,90", 
                     "img" => "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
                     "nota" => 5
                 ],
                 [
+                    "id" => 3,
                     "nome" => "Jordan 1 Retro High", 
                     "preco" => "R$ 1.299,00", 
                     "img" => "https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
                     "nota" => 5
                 ],
                 [
+                    "id" => 4,
                     "nome" => "Vans Old Skool Classic", 
                     "preco" => "R$ 399,90", 
                     "img" => "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
@@ -67,8 +72,9 @@
             ];
 
             foreach ($destaques as $item) {
+                // O onclick aqui faz o redirecionamento mágico para a página de detalhes
                 echo '
-                <div class="col-4">
+                <div class="col-4" onclick="window.location.href=\'produto.php?id='.$item['id'].'\'" style="cursor: pointer;">
                     <img src="'.$item['img'].'" alt="'.$item['nome'].'">
                     <h4>'.$item['nome'].'</h4>
                     
