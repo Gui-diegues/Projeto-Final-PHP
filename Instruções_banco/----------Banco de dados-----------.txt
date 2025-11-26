@@ -1,0 +1,30 @@
+----------Banco de dados------------------
+loja1
+
+
+----------Utilizando----------------------
+
+painel administrativo
+           L> localhost/Projeto-final-PHP/admin/
+
+
+Criação:
+----------ADMINISTRAÇÃO--------------------
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente VARCHAR(100) NOT NULL,
+    cidade VARCHAR(100),
+    estado VARCHAR(100)
+);
+
+
+
+----------Estoque-----------------------------
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produto VARCHAR(100) NOT NULL,
+    quantidade INT DEFAULT 0,
+    valor DECIMAL(10,2)
+);

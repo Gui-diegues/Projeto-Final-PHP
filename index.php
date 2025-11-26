@@ -4,6 +4,7 @@
     include 'header.php'; 
 ?>
 
+            <!-- Banner Principal -->
             <div class="row">
                 <div class="col-2">
                     <h1>Sua Jornada <br>Começa Pelos Pés!</h1>
@@ -15,7 +16,10 @@
                 </div>
             </div>
         </div>
-    </div> <div class="categories">
+    </div> <!-- Fecha as divs abertas no header.php -->
+
+    <!-- Categorias -->
+    <div class="categories">
         <div class="small-container">
             <div class="row">
                 <div class="col-3">
@@ -34,6 +38,7 @@
         </div>
     </div>
 
+    <!-- Mais Vendidos -->
     <div class="small-container">
         <h2 class="title">Mais Vendidos da Semana</h2>
         <div class="row">
@@ -43,9 +48,11 @@
                 <div class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
                 <p>R$ 599,90</p>
             </div>
-            </div>
+            <!-- Adicione mais produtos aqui se quiser -->
+        </div>
     </div>
 
+    <!-- Oferta -->
     <div class="offer">
         <div class="small-container">
             <div class="row">

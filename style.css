@@ -352,7 +352,7 @@ ul {
     .col-3 img, .col-4 img {
         height: auto;
     }
-} /* <--- AQUI ESTAVA O ERRO: FECHEI A CHAVE QUE FALTAVA */
+}
 
 
 /* --- Estilos extras para a página de Lançamentos --- */
