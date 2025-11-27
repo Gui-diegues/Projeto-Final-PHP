@@ -1,0 +1,180 @@
+<?php 
+$titulo = "JSON CALÇADOS | Sneakers & Streetwear";
+$pagina_atual = "home";
+include 'header.php';
+?>
+
+<main class="container">
+  <!-- HERO / BANNER -->
+  <section class="header">
+ <div class="row">
+ <div class="col-2">
+ <h1>Sua Jornada <br>Começa Pelos Pés!</h1>
+ <p>Não é apenas sobre caminhar. É sobre deixar sua marca no mundo.<br>Descubra a fusão perfeita entre conforto, custo benefício e estilo.</p
+                                                                                                                                            
+   <a href="lancamentos.php" class="btn">Ver Coleção Nova &#8594;</a>
+  </div>
+
+   <div class="col-2">
+  <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Destaque - Tênis vermelhos">
+  </div>
+  </div>
+ </section>
+
+ <!-- CATEGORIAS -->
+  <section class="categories">
+   <div class="small-container">
+   <div class="row">
+   <div class="col-3">
+  <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=400&q=80" alt="Categoria Running">
+ <h3>Tênis de corrida</h3>
+   </div>
+
+ <div class="col-3">
+ <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=400&q=80" alt="Categoria Streetwear">
+   <h3>Estilo Urbano</h3>
+           </div>
+
+     <div class="col-3">
+    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=400&q=80" alt="Categoria Casual">
+   <h3>Clássicos atemporais</h3>
+   </div>
+   </div>
+   </div>
+   </section>
+
+    <!-- MAIS VENDIDOS -->
+    <section class="best-sellers">
+    <div class="small-container">
+    <h2 class="title">Mais Vendidos da Semana</h2>
+
+     <div class="row">
+       <?php
+        // Lista de produtos em destaque na Home
+      $destaques = [
+           [
+      "id" => 1, 
+      "nome" => "Nike Air Zoom Pegasus", 
+      "preco" => "R$ 599,90", 
+       "img" => "https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=500&q=80",
+        "nota" => 5
+        ]
+
+         [
+        "id" => 2,
+      "nome" => "Nike Air Force 1 '07", 
+      "preco" => "R$ 749,90", 
+       "img" => "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80",
+        "nota" => 5
+              ],
+             [
+       "id" => 3,
+        "nome" => "Jordan 1 Retro High", 
+         "preco" => "R$ 1.299,00", 
+         "img" => "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=500&q=80",
+          "nota" => 5
+                    ],
+                    [
+          "id" => 4,
+         "nome" => "Vans Old Skool Classic", 
+         "preco" => "R$ 399,90", 
+          "img" => "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=500&q=80",
+           "nota" => 4
+          ]
+        ];
+
+       foreach ($destaques as $item): 
+     // escapar dados para evitar XSS caso venham do DB no futuro
+     $id = (int)$item['id'];
+     $nome = htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8');
+     $preco = htmlspecialchars($item['preco'], ENT_QUOTES, 'UTF-8');
+      $img = htmlspecialchars($item['img'], ENT_QUOTES, 'UTF-8');
+      $nota = (int)$item['nota'];
+         ?>
+      <div class="col-4" onclick="window.location.href='produto.php?id=<?=$id?>'" style="cursor: pointer;">
+      <img src="<?=$img?>" alt="<?=$nome?>">
+       <h4><?=$nome?></h4>
+
+        <div class="rating" aria-label="Avaliação: <?=$nota?> de 5">
+       <?php
+          for ($i = 1; $i <= 5; $i++) {
+         if ($i <= $nota) {
+         echo '<i class="fa fa-star" aria-hidden="true"></i>';
+      } elseif ($i === $nota + 1 && $nota < 5 && ($nota - floor($nota)) >= 0.5) {
+         // caso queira meia estrela (se nota for float), mas aqui nota é int
+         echo '<i class="fa fa-star-half-o" aria-hidden="true"></i>';
+       } else {
+        echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+        }
+        }
+        ?>
+       </div>
+
+       <p><?=$preco?></p>
+      </div>
+     <?php endforeach; ?>
+     </div>
+     </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section class="offer">
+     <div class="small-container">
+     <div class="row">
+     <div class="col-2">
+     <img src="https://images.unsplash.com/photo-1608667508764-33cf0726b13a?auto=format&fit=crop&w=500&q=60" class="offer-img" alt="Yeezy 700 Wave">
+      </div>
+
+       <div class="col-2">
+        <p>Disponível Exclusivamente na JSON Calçados</p>
+        <h1>Yeezy Boost 700 "Wave"</h1>
+       <small>O design que redefiniu a moda urbana. Solado com tecnologia Boost encapsulada para conforto extremo.</small>
+        <br>
+         <!-- Link para a página de produto (use o id correto da sua loja) -->
+         <a href="produto.php?id=5" class="btn">Comprar Agora &#8594;</a>
+         </div>
+         </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section class="testimonial">
+       <div class="small-container">
+        <h2 class="title">Como foram as experiências de nossos últimos clientes</h2>
+
+         <div class="row">
+         <div class="col-3">
+         <i class="fa fa-quote-left" aria-hidden="true"></i>
+          <p>"Comprei esse tênis para usar no trabalho, já que eu ando bastante lá, e eles são muito bons, confortáveis, amortecedor é bom e são fáceis de colocar ou tirar. Vale super a pena."</p>
+          <div class="rating" aria-hidden="true">
+           <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+           </div>
+           <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=200&q=80" alt="Carlos">
+           <h3>Carlos Herriot</h3>
+            </div>
+
+           <div class="col-3">
+           <i class="fa fa-quote-left" aria-hidden="true"></i>
+           <p>"Este tênis é extremamente confortável. O material é bom, o custo benefício é ótimo e o tamanho indicado na descrição bateu certinho. Meus treinos melhoraram 100%."</p>
+            <div class="rating" aria-hidden="true">
+          <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+           </div>
+           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Daniel">
+          <h3>Daniel Brandão</h3>
+           </div>
+
+           <div class="col-3">
+           <i class="fa fa-quote-left" aria-hidden="true"></i>
+           <p>"Fico deveras impressionado com o esmero deste calçado, que remete aos áureos tempos dos velhos mestres sapateiros. Recebam meus sinceros cumprimentos pela fidalguia do produto"</p>
+          <div class="rating" aria-hidden="true">
+         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+           </div>
+          <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=200&q=80" alt="Jadilson">
+         <h3>Jadilson Paiva</h3>
+         </div>
+        </div>
+         </div>
+       </section>
+         </main>
+
+<?php include 'footer.php'; ?>
