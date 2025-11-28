@@ -1,4 +1,4 @@
-// db.js - Nosso banco de dados de produtos
+
 const produtosDB = [
     {
         id: 1,
@@ -31,5 +31,5 @@ const produtosDB = [
             { user: "SneakerHead", nota: 5, texto: "Graal. Materiais de primeira." }
         ]
     },
-    // ... Você pode adicionar os outros sapatos aqui seguindo este modelo
+    
 ];

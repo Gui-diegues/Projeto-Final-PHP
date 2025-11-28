@@ -130,7 +130,7 @@
                     <div class="rating">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     </div>
-                    <img src="https://instagram.fjpa1-1.fna.fbcdn.net/v/t51.2885-19/174007433_1635218260021774_4514812593657735619_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zMTkuYzIifQ&_nc_ht=instagram.fjpa1-1.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2QGlcn1ch83K4uD1oxespkTgHwO_chGb5Inb3jUuwuNLwJg-Pj_P0Oyp7fhdZ_5wVx3MK0DjeRraLnC0bgRJpVwH&_nc_ohc=eqKs_ruV_ywQ7kNvwGRqw44&_nc_gid=-jvfzWeI0owGY-pwAnR7Ig&edm=APoiHPcBAAAA&ccb=7-5&oh=00_AfjotSE6tUS-SzimaO6lcklDGYs34fcWZUeqPuy5nmlwag&oe=69292EC9&_nc_sid=22de04" alt="Carlos">
+                    <img src="https://scontent.fjpa1-1.fna.fbcdn.net/v/t39.30808-6/465042387_8844839832228195_199461304037484210_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=zRSJkq-FWlQQ7kNvwHdUDPc&_nc_oc=Adm7xpkndquMfs_3NSEZx_Jg4ZCcnMDDsZVTmlavgtspu93Ur87Cu8jVHVwgjwWUIJmVH4QTXIaV6vPxYNmBE0Mu&_nc_zt=23&_nc_ht=scontent.fjpa1-1.fna&_nc_gid=Jqzug1rTLkju9rq3Va8Mqw&oh=00_AfjutSS8bjZnq-Bo09x-dMrjsxDql9AQqgddOtXZBCitpQ&oe=692F9129" alt="Carlos">
                     <h3>Carlos Herriot</h3>
                 </div>
                 <div class="col-3">

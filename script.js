@@ -1,6 +1,3 @@
-// ---------------------------------------------------------
-// 1. MENU MOBILE
-// ---------------------------------------------------------
 var MenuItems = document.getElementById("MenuItems");
 MenuItems.style.maxHeight = "0px";
 
@@ -12,9 +9,6 @@ function menutoggle() {
     }
 }
 
-// ---------------------------------------------------------
-// 2. SISTEMA DE NOTIFICAÇÃO (Toast)
-// ---------------------------------------------------------
 function mostrarNotificacao(mensagem) {
     const notificacao = document.createElement('div');
     notificacao.style.position = 'fixed';
@@ -39,13 +33,9 @@ function mostrarNotificacao(mensagem) {
     }, 3000);
 }
 
-// ---------------------------------------------------------
-// 3. INTERAÇÃO COM PRODUTOS & SALVAR PEDIDO
-// ---------------------------------------------------------
 const products = document.querySelectorAll('.col-4');
 
 products.forEach(product => {
-    // Efeitos visuais
     product.style.transition = "all 0.3s ease";
     product.style.borderRadius = "10px";
     product.style.padding = "10px";
@@ -62,36 +52,28 @@ products.forEach(product => {
         product.style.borderBottom = "none";
     });
 
-    // --- AQUI ESTÁ A MÁGICA DE SALVAR O PEDIDO ---
     product.addEventListener('click', () => {
         const nomeProduto = product.querySelector('h4').innerText;
         const precoTexto = product.querySelector('p').innerText;
         
-        // 1. Cria os dados do novo pedido
         const novoPedido = {
-            id: "#" + Math.floor(Math.random() * 9000 + 1000), // ID aleatório
-            data: new Date().toLocaleDateString('pt-BR'),      // Data de hoje
-            produto: nomeProduto,                              // Nome do tênis
-            status: "Processando",                             // Status inicial
-            total: precoTexto                                  // Preço
+            id: "#" + Math.floor(Math.random() * 9000 + 1000),
+            data: new Date().toLocaleDateString('pt-BR'),
+            produto: nomeProduto,
+            status: "Processando",
+            total: precoTexto
         };
 
-        // 2. Pega a lista antiga do navegador (ou cria uma vazia se não tiver nada)
         let listaPedidos = JSON.parse(localStorage.getItem('meusPedidos')) || [];
 
-        // 3. Adiciona o novo pedido na lista
         listaPedidos.push(novoPedido);
 
-        // 4. Salva de volta no navegador (transformando em texto)
         localStorage.setItem('meusPedidos', JSON.stringify(listaPedidos));
 
         mostrarNotificacao("Pedido " + novoPedido.id + " gerado! Veja em 'Meus Pedidos'.");
     });
 });
 
-// ---------------------------------------------------------
-// 4. ANIMAÇÃO DE SCROLL
-// ---------------------------------------------------------
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {

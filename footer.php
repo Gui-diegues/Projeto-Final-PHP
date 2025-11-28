@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="footer-col-1">
                     <h3>Baixe Nosso App</h3>
-                    <p>Tenha acesso antecipado aos "Drops" de tênis limitados.</p>
+                    <p>Tenha acesso antecipado aos lançamentos de tênis exclusivos.</p>
                     <div class="app-logo">
                         <img src="https://play.google.com/intl/pt-BR/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Play Store" width="150">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" width="135" style="margin-bottom: 10px;">
@@ -17,7 +17,7 @@
                     <h3>Links Úteis</h3>
                     <ul>
                         <li>Guia de Tamanhos</li>
-                        <li>Blog Sneakerhead</li>
+                        <li>Nossas Coleções</li>
                         <li>Trocas e Devoluções</li>
                         <li>Trabalhe Conosco</li>
                     </ul>
@@ -26,9 +26,9 @@
                     <h3>Siga-nos</h3>
                     <ul>
                         <li>Instagram</li>
-                        <li>Twitter</li>
-                        <li>TikTok</li>
-                        <li>YouTube</li>
+                        <li>Facebook</li>
+                        <li>Whatsapp</li>
+                        <li>Telegram</li>
                     </ul>
                 </div>
             </div>

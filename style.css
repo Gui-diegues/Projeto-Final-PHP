@@ -1,4 +1,3 @@
-/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +8,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* Variáveis */
 :root {
-    --primary-color: #ff523b; /* Cor de destaque (Laranja/Vermelho) */
+    --primary-color: #ff523b;
 }
 
-/* --- Cabeçalho e Navegação --- */
 .navbar {
     display: flex;
     align-items: center;
@@ -52,7 +49,6 @@ p {
     padding-right: 25px;
 }
 
-/* --- Hero Section (Banner Principal) --- */
 .row {
     display: flex;
     align-items: center;
@@ -98,7 +94,6 @@ p {
     margin-top: 70px;
 }
 
-/* --- Categorias --- */
 .categories {
     margin: 70px 0;
 }
@@ -129,7 +124,6 @@ p {
     padding-right: 25px;
 }
 
-/* --- Produtos --- */
 .col-4 {
     flex-basis: 25%;
     padding: 10px;
@@ -181,7 +175,6 @@ h4 {
     transform: translateY(-5px);
 }
 
-/* --- Oferta Exclusiva --- */
 .offer {
     background: radial-gradient(#fff, #e6e6e6);
     margin-top: 80px;
@@ -196,7 +189,6 @@ small {
     color: #555;
 }
 
-/* --- Depoimentos --- */
 .testimonial {
     padding-top: 100px;
 }
@@ -238,7 +230,6 @@ small {
     font-size: 16px;
 }
 
-/* --- Rodapé --- */
 .footer {
     background: #000;
     color: #8a8a8a;
@@ -308,9 +299,6 @@ ul {
     display: none;
 }
 
-/* --- Responsividade (Media Queries) --- */
-
-/* Para tablets e telas médias */
 @media only screen and (max-width: 800px) {
     nav ul {
         position: absolute;
@@ -336,7 +324,6 @@ ul {
     }
 }
 
-/* Para celulares (telas pequenas) */
 @media only screen and (max-width: 600px) {
     .row {
         text-align: center;
@@ -348,14 +335,11 @@ ul {
         font-size: 26px;
         line-height: 32px;
     }
-    /* Ajuste de altura para imagens no mobile */
     .col-3 img, .col-4 img {
         height: auto;
     }
 }
 
-
-/* --- Estilos extras para a página de Lançamentos --- */
 .row-2 {
     justify-content: space-between;
     margin: 50px auto 50px;
@@ -394,7 +378,6 @@ select:focus {
     color: #fff;
 }
 
-/* --- Estilos da Página de Conta --- */
 .account-page {
     padding: 50px 0;
     background: radial-gradient(#fff, #e6e6e6);
@@ -476,7 +459,6 @@ form a {
     transition: transform 1s;
 }
 
-/* --- Estilos da Página de Pedidos --- */
 .cart-page {
     margin: 80px auto;
 }
@@ -503,7 +485,6 @@ table.orders-table {
     background-color: #f9f9f9;
 }
 
-/* Etiquetas de Status */
 .status {
     padding: 5px 10px;
     border-radius: 20px;
@@ -526,7 +507,6 @@ table.orders-table {
     color: #e74c3c;
 }
 
-/* Botão Pequeno para a Tabela */
 .btn-sm {
     text-decoration: none;
     color: #ff523b;
@@ -543,7 +523,6 @@ table.orders-table {
     color: #fff;
 }
 
-/* Responsividade para a tabela no celular */
 @media only screen and (max-width: 600px) {
     .orders-table {
         display: block;
@@ -552,7 +531,6 @@ table.orders-table {
     }
 }
 
-/* --- Botão Flutuante WhatsApp --- */
 .whatsapp-float {
     position: fixed;
     width: 60px;
@@ -579,7 +557,6 @@ table.orders-table {
     color: #FFF;
 }
 
-/* Ajuste do WhatsApp para telas pequenas */
 @media only screen and (max-width: 600px) {
     .whatsapp-float {
         width: 50px;
@@ -593,7 +570,7 @@ table.orders-table {
         margin-top: 13px;
     }
 }
-/* Estilos da Página de Produto Único */
+
 .single-product {
     margin-top: 80px;
 }
