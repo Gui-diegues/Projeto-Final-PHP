@@ -5,6 +5,7 @@
         font-size: 24px;
     }
 </style>
+
 <?php
 
     require_once "config.inc.php";

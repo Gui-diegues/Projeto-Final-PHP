@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <?php
     require_once "config.inc.php";
 
@@ -9,14 +10,14 @@
         $sql = "INSERT INTO produtos (produto, quantidade, valor) VALUES ('$produto', '$quantidade', '$valor')";
 
         if(mysqli_query($conexao, $sql)){
-            echo "<h3>Produto cadastrado com sucesso</h3>";
+            echo "<h3 class'print'>Produto cadastrado com sucesso</h3>";
             echo "<a href='?pg=clientes_admin'>Voltar</a>";
         }else{
-            echo "<h3>Erro ao cadastrar produto</h3>";
+            echo "<h3 class='print'>Erro ao cadastrar produto</h3>";
         }
 
     }else{
-        echo "<h2>Acesso negado!</h2>";
+        echo "<h2 class='print'>Acesso negado!</h2>";
         echo "<a href='?pg=clientes_admin'>Voltar</a>";
     }
 ?>

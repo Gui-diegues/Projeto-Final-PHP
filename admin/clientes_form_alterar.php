@@ -21,7 +21,7 @@
         <input type="hidden" name="id" value="<?=$id?>">
         
         <label>Nome:</label>
-        <input type="text" name="nome" value="<?=$nome?>"><br>
+        <input type="text" name="cliente" value="<?=$cliente?>"><br>
         <label>cidade:</label>
         <input type="text" name="cidade" value="<?=$cidade?>"><br> 
         <label>Estado:</label>

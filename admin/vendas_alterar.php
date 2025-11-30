@@ -4,6 +4,7 @@
         font-size: 24px;
     }
 </style>
+<link rel="stylesheet" href="style.css">
 <?php
 
 require_once "config.inc.php";
@@ -24,10 +25,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<h3 class='alterar'>Produto alterado com sucesso!</h3>";
         echo "<a class='botaomenu' href='?pg=vendas_admin'>Voltar</a>";
     }else{
-        echo "<h3>Erro ao alterar Produto!</h3>";
+        echo "<h3 class='print'>Erro ao alterar Produto!</h3>";
     }
 }else{
-    echo "<h2>Acesso negado!</h2>";
+    echo "<h2 class='print'>Acesso negado!</h2>";
     echo "<a class='botaomenu' href='?pg=vendas_admin'>Voltar</a>";
 }
 

@@ -40,7 +40,7 @@
     margin: 1px;
 }
 </style>
-
+<link rel="stylesheet" href="style.css">
 <?php
     require_once "config.inc.php";
 
@@ -72,7 +72,7 @@
         }
     echo "</div>";
     }else{
-        echo "<h2>Nenhum produto cadastrado</h2>";
+        echo "<h2 class='print'>Nenhum produto cadastrado</h2>";
         echo "<a href='?pg=index'>Voltar</a>";
     }
             
