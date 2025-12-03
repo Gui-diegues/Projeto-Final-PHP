@@ -1,4 +1,57 @@
 <?php 
+    session_start();
+    include 'conexao.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['finalizar_compra'])) {
+        header('Content-Type: application/json');
+
+        if (!isset($_SESSION['id_cliente'])) {
+            echo json_encode(['sucesso' => false, 'erro' => 'Faça login para finalizar a compra.']);
+            exit;
+        }
+
+        $input = json_decode(file_get_contents('php://input'), true);
+        $carrinho = $input['carrinho'];
+        $total = $input['total'];
+        $id_cliente = $_SESSION['id_cliente'];
+
+        if (empty($carrinho)) {
+            echo json_encode(['sucesso' => false, 'erro' => 'Carrinho vazio.']);
+            exit;
+        }
+
+        try {
+            $pdo->beginTransaction();
+
+            $sql_pedido = "INSERT INTO pedidos (id_cliente, data_pedido, status, total) VALUES (:id_cliente, NOW(), 'Processando', :total)";
+            $stmt = $pdo->prepare($sql_pedido);
+            $stmt->bindValue(':id_cliente', $id_cliente);
+            $stmt->bindValue(':total', $total);
+            $stmt->execute();
+            $id_pedido = $pdo->lastInsertId();
+
+            $sql_item = "INSERT INTO itens_pedido (id_pedido, id_produto, qtd, preco) VALUES (:id_pedido, :id_produto, :qtd, :preco)";
+            $stmt_item = $pdo->prepare($sql_item);
+
+            foreach ($carrinho as $item) {
+                $stmt_item->bindValue(':id_pedido', $id_pedido);
+                $stmt_item->bindValue(':id_produto', $item['id']);
+                $stmt_item->bindValue(':qtd', $item['qtd']);
+                $stmt_item->bindValue(':preco', $item['preco']);
+                $stmt_item->execute();
+            }
+
+            $pdo->commit();
+            echo json_encode(['sucesso' => true]);
+            exit;
+
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            echo json_encode(['sucesso' => false, 'erro' => 'Erro no banco: ' . $e->getMessage()]);
+            exit;
+        }
+    }
+
     $titulo = "Meu Carrinho | JSON CALÇADOS";
     $pagina_atual = "carrinho";
     include 'header.php'; 
@@ -69,6 +122,7 @@
     let carrinho = JSON.parse(localStorage.getItem('jsonCarrinho')) || [];
     const tabela = document.getElementById('tabela-carrinho');
     let descontoValor = 0;
+    let totalParaEnvio = 0;
 
     function carregarCarrinho() {
         tabela.innerHTML = `<tr><th>Produto</th><th>Qtd</th><th>Subtotal</th></tr>`;
@@ -109,6 +163,8 @@
     function atualizarTotais(subtotal) {
         let total = subtotal - descontoValor;
         if(total < 0) total = 0;
+        
+        totalParaEnvio = total;
 
         document.getElementById('cart-subtotal').innerText = "R$ " + subtotal.toFixed(2).replace('.', ',');
         document.getElementById('cart-discount').innerText = "- R$ " + descontoValor.toFixed(2).replace('.', ',');
@@ -151,24 +207,44 @@
             alert("Seu carrinho está vazio!");
             return;
         }
-        
-        let historico = JSON.parse(localStorage.getItem('meusPedidos')) || [];
-        let totalFinal = document.getElementById('cart-total').innerText;
-        
-        let novoPedido = {
-            id: "#" + Math.floor(Math.random() * 9000 + 1000),
-            data: new Date().toLocaleDateString('pt-BR'),
-            produto: carrinho.length + " Itens (Via Carrinho)",
-            status: "Processando",
-            total: totalFinal
-        };
 
-        historico.push(novoPedido);
-        localStorage.setItem('meusPedidos', JSON.stringify(historico));
-        localStorage.removeItem('jsonCarrinho');
-        
-        alert("Compra realizada com sucesso! Obrigado.");
-        window.location.href = "pedidos.php";
+        const btn = document.querySelector('.checkout-btn');
+        btn.innerText = "Processando...";
+        btn.disabled = true;
+
+        fetch('carrinho.php?finalizar_compra=true', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                carrinho: carrinho,
+                total: totalParaEnvio
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.sucesso) {
+                localStorage.removeItem('jsonCarrinho');
+                alert("Compra realizada com sucesso!");
+                window.location.href = "meus_pedidos.php";
+            } else {
+                if(data.erro.includes("Faça login")) {
+                    alert("Você precisa fazer login para comprar.");
+                    window.location.href = "conta.php";
+                } else {
+                    alert("Erro: " + data.erro);
+                    btn.innerText = "Finalizar Compra";
+                    btn.disabled = false;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert("Erro ao processar pedido.");
+            btn.innerText = "Finalizar Compra";
+            btn.disabled = false;
+        });
     }
 
     carregarCarrinho();
