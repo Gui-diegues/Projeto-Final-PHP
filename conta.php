@@ -1,10 +1,12 @@
 <?php 
     session_start();
-    include 'conexao.php';
+    include 'conexao.php'; 
 
     $mensagem = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        // --- PROCESSAMENTO DO CADASTRO ---
         if (isset($_POST['cadastro'])) {
             $nome = $_POST['usuario'];
             $email = $_POST['email']; 
@@ -17,8 +19,10 @@
             if($check->rowCount() > 0){
                  $mensagem = "<span style='color:red; font-size:12px;'>E-mail já cadastrado!</span>";
             } else {
-                $sql = "INSERT INTO clientes (cliente, email, senha, cidade, estado) VALUES (:nome, :email, :senha, 'Online', 'BR')";
+                
+                $sql = "INSERT INTO clientes (nome, email, senha) VALUES (:nome, :email, :senha)";
                 $stmt = $pdo->prepare($sql);
+                
                 $stmt->bindValue(':nome', $nome);
                 $stmt->bindValue(':email', $email);
                 $stmt->bindValue(':senha', $senha);
@@ -31,12 +35,14 @@
             }
         }
 
+        // --- PROCESSAMENTO DO LOGIN ---
         if (isset($_POST['login'])) {
             $nome = $_POST['usuario'];
             $senha = $_POST['senha'];
 
-            $sql = "SELECT * FROM clientes WHERE cliente = :nome AND senha = :senha";
+            $sql = "SELECT * FROM clientes WHERE nome = :nome AND senha = :senha";
             $stmt = $pdo->prepare($sql);
+            
             $stmt->bindValue(':nome', $nome);
             $stmt->bindValue(':senha', $senha);
             $stmt->execute();
@@ -44,12 +50,14 @@
             if ($stmt->rowCount() > 0) {
                 $dados = $stmt->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['id_cliente'] = $dados['id'];
-                $_SESSION['nome_cliente'] = $dados['cliente'];
+                
+                // Usando a coluna 'nome' para a sessão/localStorage
+                $_SESSION['nome_cliente'] = $dados['nome']; 
 
                 echo "<script>
-                        localStorage.setItem('usuarioLogado', '" . $dados['cliente'] . "');
-                        window.location.href = 'index.php';
-                      </script>";
+                         localStorage.setItem('usuarioLogado', '" . $dados['nome'] . "');
+                         window.location.href = 'index.php';
+                       </script>";
             } else {
                 $mensagem = "<span style='color:red; font-size:12px;'>Usuário ou senha incorretos.</span>";
             }
@@ -226,7 +234,8 @@
     var Indicator = document.getElementById("Indicator");
 
     function register() {
-        RegForm.style.transform = "translateX(-325px)";
+        // Assume que 325px é o deslocamento necessário para centralizar
+        RegForm.style.transform = "translateX(-325px)"; 
         LoginForm.style.transform = "translateX(-325px)";
         Indicator.style.transform = "translateX(100px)";
     }
