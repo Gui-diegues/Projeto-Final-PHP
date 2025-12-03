@@ -11,7 +11,7 @@
                 </div>
                 <div class="footer-col-2">
                     <h2 style="color:white;">JSON CALÇADOS</h2>
-                    <p>Nosso propósito é conectar a cultura Streetwear com quem valoriza estilo e autenticidade.</p>
+                    <p>Nosso propósito é ressignificar a experiência como voce caminha, com conforto, estilo e autenticidade.</p>
                 </div>
                 <div class="footer-col-3">
                     <h3>Links Úteis</h3>

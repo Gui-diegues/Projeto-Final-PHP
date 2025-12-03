@@ -1,11 +1,11 @@
 <?php 
+    include 'conexao.php';
     $titulo = "Coleções | JSON CALÇADOS";
     $pagina_atual = "colecoes";
     include 'header.php'; 
 ?>
 
 <style>
-
     .row-2 { margin-top: 50px; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; margin-bottom: 20px;}
     .rating .fa { color: #ff523b; }
 </style>
@@ -19,22 +19,22 @@
 
     <div class="row">
         <?php
-        $performance = [
-            ["id" => 14, "nome" => "Nike Air Zoom Alphafly", "preco" => "R$ 1.299,00", "img" => "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 15, "nome" => "Adidas Ultraboost 22", "preco" => "R$ 999,90", "img" => "https://images.unsplash.com/photo-1584735175097-719d848f8449?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 16, "nome" => "Asics Gel-Nimbus 25", "preco" => "R$ 899,90", "img" => "https://images.unsplash.com/photo-1539185441755-769473a23570?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 17, "nome" => "Mizuno Wave Prophecy", "preco" => "R$ 1.100,00", "img" => "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"]
-        ];
+        $sql_perf = "SELECT * FROM produtos WHERE id IN (14, 15, 16, 17)";
+        $stmt_perf = $pdo->query($sql_perf);
+        $performance = $stmt_perf->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($performance as $tenis) {
+            $preco = number_format($tenis['preco'], 2, ',', '.');
+            $img = !empty($tenis['img']) ? $tenis['img'] : 'https://via.placeholder.com/500';
+
             echo '
             <div class="col-4" onclick="window.location.href=\'produto.php?id='.$tenis['id'].'\'" style="cursor: pointer;">
-                <img src="'.$tenis['img'].'" alt="'.$tenis['nome'].'">
+                <img src="'.$img.'" alt="'.$tenis['nome'].'">
                 <h4>'.$tenis['nome'].'</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                 </div>
-                <p>'.$tenis['preco'].'</p>
+                <p>R$ '.$preco.'</p>
             </div>';
         }
         ?>
@@ -47,22 +47,22 @@
 
     <div class="row">
         <?php
-        $urbana = [
-            ["id" => 18, "nome" => "Converse Chuck 70 High", "preco" => "R$ 499,00", "img" => "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 4,  "nome" => "Vans Old Skool Pro", "preco" => "R$ 399,90", "img" => "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 19, "nome" => "Adidas Superstar Classic", "preco" => "R$ 449,90", "img" => "https://images.unsplash.com/photo-1605408499391-6368c628ef42?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 20, "nome" => "Nike Air Force 1 Shadow", "preco" => "R$ 799,90", "img" => "https://images.unsplash.com/photo-1552346154-21d32810aba3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"]
-        ];
+        $sql_urb = "SELECT * FROM produtos WHERE id IN (18, 4, 19, 20)";
+        $stmt_urb = $pdo->query($sql_urb);
+        $urbana = $stmt_urb->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($urbana as $tenis) {
+            $preco = number_format($tenis['preco'], 2, ',', '.');
+            $img = !empty($tenis['img']) ? $tenis['img'] : 'https://via.placeholder.com/500';
+
             echo '
             <div class="col-4" onclick="window.location.href=\'produto.php?id='.$tenis['id'].'\'" style="cursor: pointer;">
-                <img src="'.$tenis['img'].'" alt="'.$tenis['nome'].'">
+                <img src="'.$img.'" alt="'.$tenis['nome'].'">
                 <h4>'.$tenis['nome'].'</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
                 </div>
-                <p>'.$tenis['preco'].'</p>
+                <p>R$ '.$preco.'</p>
             </div>';
         }
         ?>
@@ -75,22 +75,22 @@
 
     <div class="row">
         <?php
-        $limitadas = [
-            ["id" => 21, "nome" => "Air Jordan 4 Retro", "preco" => "R$ 1.899,00", "img" => "https://images.unsplash.com/photo-1611510338559-2f463335092c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 22, "nome" => "Nike SB Dunk Low Pro", "preco" => "R$ 999,90", "img" => "https://images.unsplash.com/photo-1628253747716-0c4f5c90fdda?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 23, "nome" => "Travis Scott x Jordan", "preco" => "R$ 3.500,00", "img" => "https://images.unsplash.com/photo-1514989940723-e8e51635b782?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"],
-            ["id" => 24, "nome" => "Yeezy 700 V3 Azael", "preco" => "R$ 2.200,00", "img" => "https://images.unsplash.com/photo-1597248881519-db089d3744a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"]
-        ];
+        $sql_lim = "SELECT * FROM produtos WHERE id IN (21, 22, 23, 24)";
+        $stmt_lim = $pdo->query($sql_lim);
+        $limitadas = $stmt_lim->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($limitadas as $tenis) {
+            $preco = number_format($tenis['preco'], 2, ',', '.');
+            $img = !empty($tenis['img']) ? $tenis['img'] : 'https://via.placeholder.com/500';
+
             echo '
             <div class="col-4" onclick="window.location.href=\'produto.php?id='.$tenis['id'].'\'" style="cursor: pointer;">
-                <img src="'.$tenis['img'].'" alt="'.$tenis['nome'].'">
+                <img src="'.$img.'" alt="'.$tenis['nome'].'">
                 <h4>'.$tenis['nome'].'</h4>
                 <div class="rating">
                     <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                 </div>
-                <p>'.$tenis['preco'].'</p>
+                <p>R$ '.$preco.'</p>
             </div>';
         }
         ?>
