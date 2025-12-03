@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+
 <?php
     require_once "config.inc.php";
 
@@ -16,7 +18,7 @@
     
 ?>
 
-<h2>Alteração de produto</h2>
+<h2 class='print'>Alteração de produto</h2>
     <form action="?pg=vendas_alterar" method="post">
         <input type="hidden" name="id" value="<?=$id?>">
         

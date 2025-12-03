@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="style.css">
+
 <?php
     require_once "config.inc.php";
 
@@ -16,7 +18,7 @@
     
 ?>
 
-<h2>Cadastro de cliente</h2>
+<h2 class='print'>Cadastro de cliente</h2>
     <form action="?pg=clientes_alterar" method="post">
         <input type="hidden" name="id" value="<?=$id?>">
         

@@ -42,7 +42,7 @@
         margin-top: 15px;
         width: 100%;
         padding: 10px;
-        background-color: #4A90E2;
+        background-color: #ff523b;
         color: white;
         border: none;
         border-radius: 5px;
@@ -51,7 +51,7 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #1354ccff;
+        background-color: #f62307ff;
     }
 </style>
 <body>

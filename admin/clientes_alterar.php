@@ -5,7 +5,7 @@
 require_once "config.inc.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nome = $_POST["nome"];
+    $nome = $_POST["cliente"];
     $cidade = $_POST["cidade"];
     $estado = $_POST["estado"];
     $id = $_POST["id"];
